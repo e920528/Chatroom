@@ -4,6 +4,9 @@ const app = express();
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
  
+//set port
+app.set('port', process.env.PORT || 3000)
+
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/views/index.html');
 });
@@ -38,6 +41,6 @@ io.on('connection', (socket) => {
     });
 });
  
-server.listen(3000, () => {
-    console.log("Server Started. http://localhost:3000");
+server.listen(app.get('port'), () => {
+    console.log("Server Started.");
 });
