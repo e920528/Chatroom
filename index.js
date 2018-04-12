@@ -40,7 +40,7 @@ io.on('connection', (socket) => {
     });
     socket.on("send", (msg) => {
         //if message is not null, send message to chatroom
-        if(Object.keys(msg).length < 1)
+        if(Object.keys(msg).length >= 1)
             io.emit("msg", msg);
     });
 });
