@@ -3,7 +3,11 @@ const express = require('express');
 const app = express();
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
- 
+var path = require('path');
+
+//use static file with express
+app.use(express.static(path.resolve(__dirname, 'public')));
+
 //set port
 app.set('port', process.env.PORT || 3000)
 
